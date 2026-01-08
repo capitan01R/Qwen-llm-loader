@@ -1,6 +1,6 @@
 # Qwen-llm-loader
 Local Qwen loader and prompt refiner for ComfyUI.
-# ComfyUI-QwenThinkingLoader
+# ComfyUI-llm-loader
 
 Local Qwen3-4B-Thinking-2507/ Qwen3_4b loader and prompt refiner for ComfyUI.
 
