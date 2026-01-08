@@ -4,7 +4,7 @@ Local Qwen loader and prompt refiner for ComfyUI.
 
 Local Qwen3-4B-Thinking-2507/ Qwen3_4b loader and prompt refiner for ComfyUI.
 
-This custom node lets you load the Qwen3-4B-Thinking-2507 model completely offline and use it to refine text prompts with full control over the instructions. It supports visible thinking output, fixed seed for reproducible results, and optional full memory unloading to free VRAM after use.
+This custom node lets you load the Qwen3-4B-Thinking-2507 model completely offline and use it to refine text prompts with full control over the instructions. It supports visible thinking output, and optional full memory unloading to free VRAM after use.
 
 ## Features
 - Fully local loading (no internet required after downloading the model)
