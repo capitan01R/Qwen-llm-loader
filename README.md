@@ -33,7 +33,7 @@ No additional pip packages required.
 
 1. Add the **New Qwen Thinking Loader** node
 - Set `model_folder` to `models/qwen`
-- Choose device (cuda/cpu), dtype, and keep_loaded as needed
+- Choose device (cuda/cpu), dtype, and keep_loaded as needed, I personally keep it off-loaded
 
 2. Connect it to the **Qwen Thinking Prompt** node
 - Paste your raw prompt into `user_prompt`
