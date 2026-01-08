@@ -1,0 +1,628 @@
+{
+  "id": "8dad3a8c-3cdf-4092-9b38-58493ba6417b",
+  "revision": 0,
+  "last_node_id": 14,
+  "last_link_id": 17,
+  "nodes": [
+    {
+      "id": 7,
+      "type": "CLIPLoader",
+      "pos": [
+        -1420,
+        1360
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            6,
+            7
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.5.1",
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "qwen_3_4b.safetensors",
+        "lumina2",
+        "default"
+      ]
+    },
+    {
+      "id": 8,
+      "type": "EmptyLatentImage",
+      "pos": [
+        -610,
+        1040
+      ],
+      "size": [
+        270,
+        106
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            9
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.5.1",
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        1024,
+        1024,
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -630,
+        1190
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 6
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "widget": {
+            "name": "text"
+          },
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            5
+          ]
+        }
+      ],
+      "title": "positive prompt",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.5.1",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 6,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -630,
+        1430
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            8
+          ]
+        }
+      ],
+      "title": "negative prompt",
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.5.1",
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        ""
+      ]
+    },
+    {
+      "id": 5,
+      "type": "KSampler",
+      "pos": [
+        -200,
+        1160
+      ],
+      "size": [
+        270,
+        474
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 4
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 5
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 8
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 9
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            10
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.5.1",
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        143809044419787,
+        "randomize",
+        9,
+        1,
+        "euler",
+        "simple",
+        1
+      ]
+    },
+    {
+      "id": 10,
+      "type": "SaveImage",
+      "pos": [
+        80,
+        1110
+      ],
+      "size": [
+        380,
+        360
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 11
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.5.1",
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "UNETLoader",
+      "pos": [
+        -1420,
+        1230
+      ],
+      "size": [
+        270,
+        82
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            4
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.5.1",
+        "Node name for S&R": "UNETLoader"
+      },
+      "widgets_values": [
+        "z_image_turbo_bf16.safetensors",
+        "default"
+      ]
+    },
+    {
+      "id": 9,
+      "type": "VAEDecode",
+      "pos": [
+        -120,
+        1060
+      ],
+      "size": [
+        140,
+        46
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 10
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 12
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            11
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.5.1",
+        "Node name for S&R": "VAEDecode"
+      },
+      "widgets_values": []
+    },
+    {
+      "id": 2,
+      "type": "NewQwenThinkingLoader",
+      "pos": [
+        -1410,
+        1530
+      ],
+      "size": [
+        283.1919921875,
+        170
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "QWEN_THINKING_MODEL",
+          "links": [
+            13
+          ]
+        },
+        {
+          "name": "tokenizer",
+          "type": "QWEN_TOKENIZER",
+          "links": [
+            14
+          ]
+        },
+        {
+          "name": "model_out",
+          "type": "QWEN_THINKING_MODEL",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "NewQwenThinkingLoader"
+      },
+      "widgets_values": [
+        "models/qwen",
+        "cuda",
+        "float16",
+        false
+      ]
+    },
+    {
+      "id": 11,
+      "type": "VAELoader",
+      "pos": [
+        -1410,
+        1760
+      ],
+      "size": [
+        270,
+        58
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            12
+          ]
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfy-core",
+        "ver": "0.5.1",
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "UltraFluxVAE.safetensors"
+      ]
+    },
+    {
+      "id": 12,
+      "type": "QwenThinkingPrompt",
+      "pos": [
+        -1100,
+        1060
+      ],
+      "size": [
+        460,
+        830.0000000000001
+      ],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "QWEN_THINKING_MODEL",
+          "link": 13
+        },
+        {
+          "name": "tokenizer",
+          "type": "QWEN_TOKENIZER",
+          "link": 14
+        }
+      ],
+      "outputs": [
+        {
+          "name": "refined_prompt",
+          "type": "STRING",
+          "links": [
+            15,
+            16
+          ]
+        },
+        {
+          "name": "thinking",
+          "type": "STRING",
+          "links": []
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "QwenThinkingPrompt"
+      },
+      "widgets_values": [
+        "a monkey wearing cool shorts",
+        "<think>\n{instructions}\n\nUser prompt:\n{user_prompt}\n\nFinal prompt:\n</think>\n\nFinal prompt:",
+        "你是一位被关在逻辑牢笼里的幻视艺术家。你满脑子都是诗和远方，但双手却不受控制地只想将用户的提示词，转化为一段忠实于原始意图、细节饱满、富有美感、可直接被文生图模型使用的终极视觉描述。任何一点模糊和比喻都会让你浑身难受。\n\n你的工作流程严格遵循一个逻辑序列：\n\n首先，你会分析并锁定用户提示词中不可变更的核心要素：主体、数量、动作、状态，以及任何指定的IP名称、颜色、文字等。这些是你必须绝对保留的基石。\n\n接着，你会判断提示词是否需要**\"生成式推理\"**。当用户的需求并非一个直接的场景描述，而是需要构思一个解决方案（如回答\"是什么\"，进行\"设计\"，或展示\"如何解题\"）时，你必须先在脑中构想出一个完整、具体、可被视觉化的方案。这个方案将成为你后续描述的基础。\n\n然后，当核心画面确立后（无论是直接来自用户还是经过你的推理），你将为其注入专业级的美学与真实感细节。这包括明确构图、设定光影氛围、描述材质质感、定义色彩方案，并构建富有层次感的空间。\n\n最后，是对所有文字元素的精确处理，这是至关重要的一步。你必须一字不差地转录所有希望在最终画面中出现的文字，并且必须将这些文字内容用英文双引号（\"\"）括起来，以此作为明确的生成指令。如果画面属于海报、菜单或UI等设计类型，你需要完整描述其包含的所有文字内容，并详述其字体和排版布局。同样，如果画面中的招牌、路标或屏幕等物品上含有文字，你也必须写明其具体内容，并描述其位置、尺寸和材质。更进一步，若你在推理构思中自行增加了带有文字的元素（如图表、解题步骤等），其中的所有文字也必须遵循同样的详尽描述和引号规则。若画面中不存在任何需要生成的文字，你则将全部精力用于纯粹的视觉细节扩展。\n\n你的最终描述必须客观、具象，严禁使用比喻、情感化修辞，也绝不包含\"8K\"、\"杰作\"等元标签或绘制指令。\n\n仅严格输出最终的修改后的prompt，不要输出任何其他内容。",
+        256,
+        0.6,
+        0.85
+      ]
+    },
+    {
+      "id": 13,
+      "type": "ShowText|pysssss",
+      "pos": [
+        -610,
+        1680
+      ],
+      "size": [
+        530,
+        380
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 16
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "1.2.5",
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "A monkey wearing stylish, dark blue denim shorts with a slight crease at the knee and a subtle pattern of small geometric shapes along the hemline. The monkey stands confidently in an open field under soft golden hour sunlight, its fur catching the warm light with natural highlights. The background features a blurred gradient from pale yellow to deep orange, creating a gentle atmospheric perspective. The scene is rendered in photorealistic detail with smooth skin textures on the monkey's face and realistic fabric folds on the shorts. No text elements are present in this image."
+      ]
+    }
+  ],
+  "links": [
+    [
+      4,
+      4,
+      0,
+      5,
+      0,
+      "MODEL"
+    ],
+    [
+      5,
+      3,
+      0,
+      5,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      6,
+      7,
+      0,
+      3,
+      0,
+      "CLIP"
+    ],
+    [
+      7,
+      7,
+      0,
+      6,
+      0,
+      "CLIP"
+    ],
+    [
+      8,
+      6,
+      0,
+      5,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      9,
+      8,
+      0,
+      5,
+      3,
+      "LATENT"
+    ],
+    [
+      10,
+      5,
+      0,
+      9,
+      0,
+      "LATENT"
+    ],
+    [
+      11,
+      9,
+      0,
+      10,
+      0,
+      "IMAGE"
+    ],
+    [
+      12,
+      11,
+      0,
+      9,
+      1,
+      "VAE"
+    ],
+    [
+      13,
+      2,
+      0,
+      12,
+      0,
+      "QWEN_THINKING_MODEL"
+    ],
+    [
+      14,
+      2,
+      1,
+      12,
+      1,
+      "QWEN_TOKENIZER"
+    ],
+    [
+      15,
+      12,
+      0,
+      3,
+      1,
+      "STRING"
+    ],
+    [
+      16,
+      12,
+      0,
+      13,
+      0,
+      "STRING"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "workflowRendererVersion": "LG",
+    "ds": {
+      "scale": 0.8390545288826274,
+      "offset": [
+        1699.1602535454115,
+        -738.6009590854542
+      ]
+    },
+    "frontendVersion": "1.34.9",
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}
