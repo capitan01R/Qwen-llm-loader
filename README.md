@@ -10,7 +10,6 @@ This custom node lets you load the Qwen3-4B-Thinking-2507 model completely offli
 - Fully local loading (no internet required after downloading the model)
 - Flexible prompt template and instruction bodies
 - Visible chain-of-thought ("thinking") output
-- Fixed seed support for deterministic refinement
 - Optional keep_loaded toggle to completely unload the model from GPU and RAM
 - Works with any Stable Diffusion workflow
 
