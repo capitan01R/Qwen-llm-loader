@@ -1,12 +1,12 @@
-from .qwen_loader import NewQwenThinkingLoader
-from .qwen_thinking_prompt import QwenThinkingPrompt  # Keep your existing prompt node
+from .qwen_loader_folder import QwenThinkingLoaderFolder
+from .qwen_thinking_prompt import QwenThinkingPrompt
 
 NODE_CLASS_MAPPINGS = {
-    "NewQwenThinkingLoader": NewQwenThinkingLoader,
+    "QwenThinkingLoaderFolder": QwenThinkingLoaderFolder,
     "QwenThinkingPrompt": QwenThinkingPrompt,
 }
 
 NODE_DISPLAY_NAME_MAPPINGS = {
-    "NewQwenThinkingLoader": "New Qwen Thinking Loader",
+    "QwenThinkingLoaderFolder": "Qwen Thinking Loader (Merged or Sharded)",
     "QwenThinkingPrompt": "Qwen Thinking Prompt (Before KSampler)",
 }
