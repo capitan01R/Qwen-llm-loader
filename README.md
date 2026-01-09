@@ -26,7 +26,7 @@ OR
 https://huggingface.co/Capitan01R/qwen-thinking-merged/tree/main/qwen_thinking_merged
 
 4. Place all files (`config.json`, `tokenizer.*`, `*.safetensors`, `model.safetensors.index.json` or shards, and any `.py` files) into:  
-`ComfyUI/models/qwen/downloaded-model-folder/model-files`
+`ComfyUI/models/qwen/downloaded-model-folder`
 
 5. Restart ComfyUI
 
