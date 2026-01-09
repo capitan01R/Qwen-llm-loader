@@ -27,8 +27,11 @@ https://huggingface.co/Capitan01R/qwen-thinking-merged/tree/main/qwen_thinking_m
 
 4. Place all files (`config.json`, `tokenizer.*`, `*.safetensors`, `model.safetensors.index.json` or shards, and any `.py` files) into:  
 `ComfyUI/models/qwen/downloaded-model-folder`
-
-5. Restart ComfyUI
+folder structure:
+![](images/Screenshot1.png)
+then inside the qwen/model-folder/files
+![](images/Screenshot2.png)
+6. Restart ComfyUI
 
 No additional pip packages required.
 
