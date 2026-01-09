@@ -1,10 +1,7 @@
 import torch
 import re
-import random
 
 class QwenThinkingPrompt:
-    _last_seed = None  # Tracks for increment/decrement across runs
-
     @classmethod
     def INPUT_TYPES(cls):
         return {
@@ -30,39 +27,18 @@ Rules:
                 "max_new_tokens": ("INT", {"default": 256, "min": 32, "max": 512}),
                 "temperature": ("FLOAT", {"default": 0.6, "min": 0.1, "max": 1.2}),
                 "top_p": ("FLOAT", {"default": 0.85, "min": 0.1, "max": 1.0}),
-                "base_seed": ("INT", {"default": 42, "min": 0, "max": 2147483647}),  # ← renamed from "seed"
-                "control": (["randomize", "fixed", "increment", "decrement"], {"default": "randomize"}),
             }
         }
 
-    RETURN_TYPES = ("STRING", "STRING", "INT")
-    RETURN_NAMES = ("refined_prompt", "thinking", "used_seed")
+    RETURN_TYPES = ("STRING", "STRING")
+    RETURN_NAMES = ("refined_prompt", "thinking")
     CATEGORY = "Qwen/Thinking"
     FUNCTION = "run"
 
     def run(self, model, tokenizer, user_prompt, prompt_body, instruction_body,
-            max_new_tokens, temperature, top_p, base_seed=42, control="randomize"):
+            max_new_tokens, temperature, top_p):
 
-        # Seed logic
-        if control == "randomize":
-            current_seed = random.randint(0, 2147483647)
-        elif control == "fixed":
-            current_seed = base_seed
-        elif control == "increment":
-            current_seed = (self._last_seed if self._last_seed is not None else base_seed) + 1
-        elif control == "decrement":
-            current_seed = (self._last_seed if self._last_seed is not None else base_seed) - 1
-        else:
-            current_seed = base_seed
-
-        current_seed = current_seed % 2147483648  # keep in range
-        QwenThinkingPrompt._last_seed = current_seed
-
-        torch.manual_seed(current_seed)
-        if torch.cuda.is_available():
-            torch.cuda.manual_seed_all(current_seed)
-
-        # Everything below is 100% identical to your original node
+        # Insert the actual instructions and user prompt into the body template
         full_prompt = prompt_body.format(
             instructions=instruction_body.strip(),
             user_prompt=user_prompt.strip()
@@ -84,6 +60,7 @@ Rules:
 
         text = tokenizer.decode(output[0], skip_special_tokens=True)
 
+        # Extract final prompt (everything after the last "Final prompt:")
         final_marker = "Final prompt:"
         final_start = text.rfind(final_marker)
         if final_start != -1:
@@ -91,10 +68,12 @@ Rules:
         else:
             final = text.strip()
 
+        # Clean: single line, remove any tags
         final = re.sub(r"<.*?>", "", final)
         final = final.split("\n")[0].strip()
 
+        # Extract thinking content
         think_match = re.search(r"<think>(.*?)</think>", text, re.DOTALL)
         thinking = think_match.group(1).strip() if think_match else "No thinking captured."
 
-        return (final, thinking, current_seed)
+        return (final, thinking)
