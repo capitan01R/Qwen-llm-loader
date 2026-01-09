@@ -2,9 +2,9 @@
 Local Qwen loader and prompt refiner for ComfyUI.
 # ComfyUI-llm-loader
 
-Local Qwen3-4B-Thinking-2507/ Qwen3_4b loader and prompt refiner for ComfyUI.
+Local Qwen3-4B-Thinking-2507/ Qwen3_4b loader/ general LLM models and prompt refiner for ComfyUI.
 
-This custom node lets you load the Qwen3-4B-Thinking-2507 model completely offline and use it to refine text prompts with full control over the instructions. It supports visible thinking output, and optional full memory unloading to free VRAM after use.
+This custom node lets you load the Qwen3-4B-Thinking-2507 or any LLM model completely offline and use it to refine text prompts with full control over the instructions. It supports visible thinking output, and optional full memory unloading to free VRAM after use.
 
 ## Features
 - Fully local loading (no internet required after downloading the model)
@@ -18,20 +18,23 @@ This custom node lets you load the Qwen3-4B-Thinking-2507 model completely offli
 1. Clone or download this repository into your `ComfyUI/custom_nodes/` folder:
 2. (or download as ZIP and extract)
 
-2. Download the model files from, For this example I'm using Qwen3-4B-Thinking-2507:  
+2. Download the model files, For this example I'm using Qwen3-4B-Thinking-2507 (download all repo files):  
 https://huggingface.co/Qwen/Qwen3-4B-Thinking-2507
 
-3. Place all files (`config.json`, `tokenizer.*`, `*.safetensors` or shards, and any `.py` files) into:  
-`ComfyUI/models/qwen/`
+OR
+   Download the merged model files from here (download all repo files):
+https://huggingface.co/Capitan01R/qwen-thinking-merged/tree/main/qwen_thinking_merged
 
-4. Restart ComfyUI
+4. Place all files (`config.json`, `tokenizer.*`, `*.safetensors`, `model.safetensors.index.json` or shards, and any `.py` files) into:  
+`ComfyUI/models/qwen/downloaded-model-folder/model-files`
+
+5. Restart ComfyUI
 
 No additional pip packages required.
 
 ## Usage
 
 1. Add the **New Qwen Thinking Loader** node
-- Set `model_folder` to `models/qwen`
 - Choose device (cuda/cpu), dtype, and keep_loaded as needed, I personally keep it off-loaded
 
 2. Connect it to the **Qwen Thinking Prompt** node
