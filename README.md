@@ -35,8 +35,9 @@ then inside the qwen/model-folder/files
 
 No additional pip packages required.
 
-## note
+## Note
    to load different llm models you must ensure they contain the json config files for them so the loader can read the model and loads it. as this loader is capable to load almost all llm models not just the qwen3-4b thinking, that was just an example and an inspirational name for this build.
+
 
 ## Usage
 ![](workflow/node.png)
