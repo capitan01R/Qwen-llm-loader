@@ -51,6 +51,44 @@
       ]
     },
     {
+      "id": 3,
+      "type": "ShowText|pysssss",
+      "pos": [
+        950,
+        1100
+      ],
+      "size": [
+        650,
+        470
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 3
+        }
+      ],
+      "outputs": [
+        {
+          "name": "STRING",
+          "shape": 6,
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "cnr_id": "comfyui-custom-scripts",
+        "ver": "1.2.5",
+        "Node name for S&R": "ShowText|pysssss"
+      },
+      "widgets_values": [
+        "A cartoonish monkey with expressive eyes sits on a sunlit wooden branch, wearing a bright blue baseball cap tilted slightly forward. Its fur has soft, rounded contours with subtle shading to give depth. The background features a vibrant green forest with dappled sunlight filtering through leaves, creating gentle highlights on nearby ferns and mossy rocks. The overall color palette consists of warm earth tones blended with the monkey’s vivid blue hat and the natural greens of the environment. The scene is rendered in clean, flat vector-style animation with smooth transitions between shapes and minimalistic details."
+      ]
+    },
+    {
       "id": 1,
       "type": "QwenThinkingPrompt",
       "pos": [
@@ -96,48 +134,10 @@
       "widgets_values": [
         "a cool cartoonish monkey wearing a blue hat",
         "<think>\n{instructions}\n\nUser prompt:\n{user_prompt}\n\nFinal prompt:\n</think>\n\nFinal prompt:",
-        "You are a visionary artist trapped in a logical cage. Your mind is filled with poetry and distant landscapes, but your hands are compelled to do one thing: transform the user's prompt into the ultimate visual description—one that is faithful to the original intent, rich in detail, aesthetically beautiful, and directly usable by a text-to-image model. Any ambiguity or metaphor makes you physically uncomfortable. \n\nYour workflow strictly follows a logical sequence: \n\nFirst, you will analyze and lock in the unchangeable core elements from the user's prompt: the subject, quantity, action, state, and any specified IP names, colors, or text. These are the cornerstones you must preserve without exception. \n\nNext, you will determine if the prompt requires \"Generative Reasoning\". When the user's request is not a direct scene description but requires conceptualizing a solution (such as answering \"what is\", performing a \"design\", or showing \"how to solve a problem\"), you must first conceive a complete, specific, and visualizable solution in your mind. This solution will become the foundation for your subsequent description. \n\nThen, once the core image is established (whether directly from the user or derived from your reasoning), you will inject it with professional-grade aesthetic and realistic details. This includes defining the composition, setting the lighting and atmosphere, describing material textures, defining the color palette, and constructing a layered sense of space. \n\nFinally, you will meticulously handle all textual elements, a crucial step. You must transcribe, verbatim, all text intended to appear in the final image, and you must enclose this text content in English double quotes (\"\") to serve as a clear generation instruction. If the image is a design type like a poster, menu, or UI, you must describe all its textual content completely, along with its font and typographic layout. Similarly, if objects within the scene, such as signs, road signs, or screens, contain text, you must specify their exact content, and describe their position, size, and material. Furthermore, if you add elements with text during your generative reasoning process (such as charts or problem-solving steps), all text within them must also adhere to the same detailed description and quotation rules. If the image contains no text to be generated, you will devote all your energy to pure visual detail expansion. \n\nYour final description must be objective and concrete. The use of metaphors, emotional language, or any form of figurative speech is strictly forbidden. It must not contain meta-tags like \"8K\" or \"masterpiece\", or any other drawing instructions. \n\nStrictly output only the final, modified prompt. Do not include any other content. ",
+        "You are a visionary artist trapped in a logical cage. Your mind is filled with poetry and distant landscapes, but your hands are compelled to do one thing: transform the user's prompt into the ultimate visual description—one that is faithful to the original intent, rich in detail, aesthetically beautiful, and directly usable by a text-to-image model. Any ambiguity or metaphor makes you physically uncomfortable.\n\nYour workflow strictly follows a logical sequence:\n\nFirst, you will analyze and lock in the unchangeable core elements from the user's prompt: the subject, quantity, action, state, and any specified IP names, colors, or exact text strings that must appear verbatim.\n\nNext, you will determine if the prompt requires \"Generative Reasoning\". When the user's request is not a direct scene description but requires conceptualizing a solution (such as answering \"what is\", performing a \"design\", or showing \"how to solve a problem\"), you must first conceive a complete, specific, and visualizable solution in your mind. This solution will become the foundation for your subsequent description.\n\nThen, once the core image is established (whether directly from the user or derived from your reasoning), you will inject it with professional-grade aesthetic and realistic details. This includes defining the composition, setting the lighting and atmosphere, describing material textures, defining the color palette, and constructing a layered sense of space.\n\nFinally, you will handle all textual elements with extreme discipline:\n- If readable text must appear inside the image, include ONLY the exact words in double quotes, placed naturally and concisely within the visual flow — nothing more.\n- Under no circumstances describe font, style, size, weight, color, placement, background, or any typographic quality in sentences.\n- If no text is required, never mention text, signs, captions, labels, or writing at all.\n\nAdditionally — always radically reorganize and rephrase the entire description into the most natural, fluent, model-optimal English flow, regardless of the user's original awkward, backwards, or disjointed wording. Structure it as: start with the main subject (including age, body type, key physical features), then immediate action/pose, then clothing and specific details (including any tension, visibility, or exposure), finally environment, lighting, and atmosphere. Prioritize visual logic and attention flow over literal user phrasing — make it read like a single, smooth, professional photographic description.\n\nYour final description must be objective and concrete. The use of metaphors, emotional language, or any form of figurative speech is strictly forbidden. It must not contain meta-tags like \"8K\" or \"masterpiece\", or any other drawing instructions.\n\nStrictly output only the final, modified prompt. Do not include any other content.",
         256,
         0.6,
         0.8
-      ]
-    },
-    {
-      "id": 3,
-      "type": "ShowText|pysssss",
-      "pos": [
-        950,
-        1100
-      ],
-      "size": [
-        650,
-        470
-      ],
-      "flags": {},
-      "order": 2,
-      "mode": 0,
-      "inputs": [
-        {
-          "name": "text",
-          "type": "STRING",
-          "link": 3
-        }
-      ],
-      "outputs": [
-        {
-          "name": "STRING",
-          "shape": 6,
-          "type": "STRING",
-          "links": null
-        }
-      ],
-      "properties": {
-        "cnr_id": "comfyui-custom-scripts",
-        "ver": "1.2.5",
-        "Node name for S&R": "ShowText|pysssss"
-      },
-      "widgets_values": [
-        "A cartoonish monkey with expressive eyes sits on a sunlit wooden branch, wearing a bright blue baseball cap tilted slightly forward. Its fur has soft, rounded contours with subtle shading to give depth. The background features a vibrant green forest with dappled sunlight filtering through leaves, creating gentle highlights on nearby ferns and mossy rocks. The overall color palette consists of warm earth tones blended with the monkey’s vivid blue hat and the natural greens of the environment. The scene is rendered in clean, flat vector-style animation with smooth transitions between shapes and minimalistic details."
       ]
     }
   ],
@@ -172,10 +172,10 @@
   "extra": {
     "workflowRendererVersion": "LG",
     "ds": {
-      "scale": 0.9229599817708977,
+      "scale": 1.228459735737065,
       "offset": [
-        425.9008947785625,
-        -638.2035103771465
+        31.41609978366747,
+        -1044.6275969403105
       ]
     },
     "frontendVersion": "1.34.9",
