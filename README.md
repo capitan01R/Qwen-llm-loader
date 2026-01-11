@@ -40,7 +40,7 @@ No additional pip packages required.
 
 
 ## Usage
-![](workflow/node.png)
+![](workflow/node2.png)
 1. Add the **New Qwen Thinking Loader** node
 - Choose device (cuda/cpu), dtype, and keep_loaded as needed, I personally keep it off-loaded
 
