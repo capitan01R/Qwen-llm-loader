@@ -60,3 +60,19 @@ No additional pip packages required.
 ## Credits
 
 Based on Qwen/Qwen3-4B-Thinking-2507 from Hugging Face.
+
+## Changelog (Nightly Branch – v2.0+)
+
+### v2.0 – Major Performance & Multi-GPU Update
+- Added **torch.compile** support (`reduce-overhead` + `dynamic=True`) for 30–100% faster inference after initial warmup
+- Enabled **SDPA** (Scaled Dot-Product Attention) backend for better speed and memory efficiency on NVIDIA GPUs
+- **Multi-GPU support** via `device_map="auto"` – new toggleable input `use_multi_gpu` (default: true). Turn off for single-GPU setups (e.g. RTX 3090 with only cuda:0)
+- Modernized dtype options (`bf16` default, `fp16`, `fp32`, `auto`)
+- Improved logging, error handling, and model unloading
+- Fixed tokenizer loading bug (no more NameError)
+- Better compatibility with PyTorch 2.7–2.9+
+
+### Older Versions
+- **v1.0** – Initial release: basic offline loading, prompt refinement with thinking output, folder auto-detection, keep_loaded toggle
+
+Contributions welcome! Especially multi-GPU testing and PRs from users with 2+ GPUs.
