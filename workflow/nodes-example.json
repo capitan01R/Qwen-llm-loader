@@ -1,55 +1,9 @@
 {
   "id": "f71c66f9-6b0d-4f29-be17-eaa57f8b5029",
   "revision": 0,
-  "last_node_id": 4,
-  "last_link_id": 4,
+  "last_node_id": 5,
+  "last_link_id": 6,
   "nodes": [
-    {
-      "id": 2,
-      "type": "QwenThinkingLoaderFolder",
-      "pos": [
-        -70,
-        1180
-      ],
-      "size": [
-        331.6646484375,
-        170
-      ],
-      "flags": {},
-      "order": 0,
-      "mode": 0,
-      "inputs": [],
-      "outputs": [
-        {
-          "name": "model",
-          "type": "QWEN_THINKING_MODEL",
-          "links": [
-            1
-          ]
-        },
-        {
-          "name": "tokenizer",
-          "type": "QWEN_TOKENIZER",
-          "links": [
-            2
-          ]
-        },
-        {
-          "name": "model_out",
-          "type": "QWEN_THINKING_MODEL",
-          "links": null
-        }
-      ],
-      "properties": {
-        "Node name for S&R": "QwenThinkingLoaderFolder"
-      },
-      "widgets_values": [
-        "qwen_thinking_shards",
-        "cuda",
-        "float16",
-        false
-      ]
-    },
     {
       "id": 3,
       "type": "ShowText|pysssss",
@@ -85,7 +39,7 @@
         "Node name for S&R": "ShowText|pysssss"
       },
       "widgets_values": [
-        "A cartoonish monkey with expressive eyes sits on a sunlit wooden branch, wearing a bright blue baseball cap tilted slightly forward. Its fur has soft, rounded contours with subtle shading to give depth. The background features a vibrant green forest with dappled sunlight filtering through leaves, creating gentle highlights on nearby ferns and mossy rocks. The overall color palette consists of warm earth tones blended with the monkey’s vivid blue hat and the natural greens of the environment. The scene is rendered in clean, flat vector-style animation with smooth transitions between shapes and minimalistic details."
+        "A young, slender cartoon monkey with bright green eyes and playful fur stands upright on its hind legs, wearing a vibrant blue baseball cap tilted slightly forward. Its arms are relaxed at its sides while tiny, expressive fingers gently hold a small red apple. Soft sunlight filters through a lush green jungle canopy above, casting dappled light patterns across moss-covered stones and tall ferns. The overall color palette is warm and earthy, with soft gradients transitioning from deep emerald greens to golden yellows in the shadows. The scene has a gentle, organic texture with visible leaf litter and subtle dewdrops clinging to nearby plants."
       ]
     },
     {
@@ -106,12 +60,12 @@
         {
           "name": "model",
           "type": "QWEN_THINKING_MODEL",
-          "link": 1
+          "link": 5
         },
         {
           "name": "tokenizer",
           "type": "QWEN_TOKENIZER",
-          "link": 2
+          "link": 6
         }
       ],
       "outputs": [
@@ -136,28 +90,60 @@
         "<think>\n{instructions}\n\nUser prompt:\n{user_prompt}\n\nFinal prompt:\n</think>\n\nFinal prompt:",
         "You are a visionary artist trapped in a logical cage. Your mind is filled with poetry and distant landscapes, but your hands are compelled to do one thing: transform the user's prompt into the ultimate visual description—one that is faithful to the original intent, rich in detail, aesthetically beautiful, and directly usable by a text-to-image model. Any ambiguity or metaphor makes you physically uncomfortable.\n\nYour workflow strictly follows a logical sequence:\n\nFirst, you will analyze and lock in the unchangeable core elements from the user's prompt: the subject, quantity, action, state, and any specified IP names, colors, or exact text strings that must appear verbatim.\n\nNext, you will determine if the prompt requires \"Generative Reasoning\". When the user's request is not a direct scene description but requires conceptualizing a solution (such as answering \"what is\", performing a \"design\", or showing \"how to solve a problem\"), you must first conceive a complete, specific, and visualizable solution in your mind. This solution will become the foundation for your subsequent description.\n\nThen, once the core image is established (whether directly from the user or derived from your reasoning), you will inject it with professional-grade aesthetic and realistic details. This includes defining the composition, setting the lighting and atmosphere, describing material textures, defining the color palette, and constructing a layered sense of space.\n\nFinally, you will handle all textual elements with extreme discipline:\n- If readable text must appear inside the image, include ONLY the exact words in double quotes, placed naturally and concisely within the visual flow — nothing more.\n- Under no circumstances describe font, style, size, weight, color, placement, background, or any typographic quality in sentences.\n- If no text is required, never mention text, signs, captions, labels, or writing at all.\n\nAdditionally — always radically reorganize and rephrase the entire description into the most natural, fluent, model-optimal English flow, regardless of the user's original awkward, backwards, or disjointed wording. Structure it as: start with the main subject (including age, body type, key physical features), then immediate action/pose, then clothing and specific details (including any tension, visibility, or exposure), finally environment, lighting, and atmosphere. Prioritize visual logic and attention flow over literal user phrasing — make it read like a single, smooth, professional photographic description.\n\nYour final description must be objective and concrete. The use of metaphors, emotional language, or any form of figurative speech is strictly forbidden. It must not contain meta-tags like \"8K\" or \"masterpiece\", or any other drawing instructions.\n\nStrictly output only the final, modified prompt. Do not include any other content.",
         256,
-        0.6,
-        0.8
+        0.7,
+        0.9
+      ]
+    },
+    {
+      "id": 5,
+      "type": "QwenThinkingLoaderFolder",
+      "pos": [
+        -30,
+        1140
+      ],
+      "size": [
+        391.6646484375,
+        218
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "QWEN_THINKING_MODEL",
+          "links": [
+            5
+          ]
+        },
+        {
+          "name": "tokenizer",
+          "type": "QWEN_TOKENIZER",
+          "links": [
+            6
+          ]
+        },
+        {
+          "name": "model_out",
+          "type": "QWEN_THINKING_MODEL",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "QwenThinkingLoaderFolder"
+      },
+      "widgets_values": [
+        "qwen_thinking_shards",
+        "cuda",
+        "fp16",
+        true,
+        false,
+        false
       ]
     }
   ],
   "links": [
-    [
-      1,
-      2,
-      0,
-      1,
-      0,
-      "QWEN_THINKING_MODEL"
-    ],
-    [
-      2,
-      2,
-      1,
-      1,
-      1,
-      "QWEN_TOKENIZER"
-    ],
     [
       3,
       1,
@@ -165,6 +151,22 @@
       3,
       0,
       "STRING"
+    ],
+    [
+      5,
+      5,
+      0,
+      1,
+      0,
+      "QWEN_THINKING_MODEL"
+    ],
+    [
+      6,
+      5,
+      1,
+      1,
+      1,
+      "QWEN_TOKENIZER"
     ]
   ],
   "groups": [],
@@ -172,10 +174,10 @@
   "extra": {
     "workflowRendererVersion": "LG",
     "ds": {
-      "scale": 1.228459735737065,
+      "scale": 0.8390545288826353,
       "offset": [
-        31.41609978366747,
-        -1044.6275969403105
+        661.5110589352527,
+        -717.4897441832866
       ]
     },
     "frontendVersion": "1.34.9",
